@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Yolanda</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:linear-gradient(135deg,#ff0080,#7928ca,#2afadf);
+    background-size:400% 400%;
+    animation:bgMove 12s ease infinite;
+    position:relative;
+    padding:40px 20px 100px;
+}
+
+/* Background Animation */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Glow Effect */
+body::before{
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:rgba(255,255,255,0.1);
+    border-radius:50%;
+    filter:blur(100px);
+    animation:pulse 5s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+/* CARD */
+.card{
+    position:relative;
+    width:400px;
+    margin-top:80px;
+    padding:45px 35px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(14px);
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    z-index:10;
+    animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card h1{
+    font-size:2.8rem;
+    margin-bottom:10px;
+    animation:bounce 2s infinite;
+    text-shadow:0 0 15px rgba(255,255,255,0.7);
+}
+
+.card h2{
+    font-size:1.7rem;
+    color:#ffe066;
+    margin-bottom:15px;
+}
+
+.card p{
+    font-size:1rem;
+    line-height:1.7;
+    margin-bottom:25px;
+    color:#f5f5f5;
+}
+
+/* BUTTON */
+.btn{
+    padding:14px 30px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:#ff0080;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 0 20px rgba(255,255,255,0.5);
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    background:#ffe6f3;
+    box-shadow:0 0 30px rgba(255,255,255,0.8);
+}
+
+/* BALLOON */
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    width:70px;
+    height:90px;
+    border-radius:50%;
+    animation:float 12s infinite ease-in;
+}
+
+.balloon::before{
+    content:'';
+    position:absolute;
+    width:2px;
+    height:80px;
+    background:white;
+    left:50%;
+    top:90px;
+}
+
+.balloon:nth-child(1){
+    left:8%;
+    background:#ff4d6d;
+    animation-duration:9s;
+}
+
+.balloon:nth-child(2){
+    left:25%;
+    background:#ffd60a;
+    animation-duration:11s;
+}
+
+.balloon:nth-child(3){
+    left:50%;
+    background:#00f5d4;
+    animation-duration:8s;
+}
+
+.balloon:nth-child(4){
+    left:75%;
+    background:#c77dff;
+    animation-duration:13s;
+}
+
+.balloon:nth-child(5){
+    left:92%;
+    background:#ff99c8;
+    animation-duration:10s;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-130vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Bounce */
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+/* CONFETTI */
+.confetti{
+    position:absolute;
+    width:12px;
+    height:12px;
+    top:-20px;
+    opacity:0.8;
+    animation:confettiFall linear infinite;
+}
+
+@keyframes confettiFall{
+    0%{
+        transform:translateY(0) rotate(0deg);
+    }
+    100%{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+/* HEART */
+.heart{
+    position:absolute;
+    color:#ffccd5;
+    font-size:20px;
+    animation:heartFly 6s linear infinite;
+}
+
+@keyframes heartFly{
+    0%{
+        transform:translateY(100vh) scale(0.5);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* GALLERY POPUP */
+.gallery-popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    animation:fadePopup 0.5s ease;
+}
+
+@keyframes fadePopup{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.gallery-box{
+    width:90%;
+    max-width:750px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(12px);
+    padding:30px;
+    border-radius:30px;
+    text-align:center;
+    color:white;
+    position:relative;
+    box-shadow:0 0 40px rgba(255,255,255,0.3);
+}
+
+.gallery-box h2{
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+/* GRID FOTO */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.gallery img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:0.4s;
+    cursor:pointer;
+    border:4px solid rgba(255,255,255,0.3);
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(255,255,255,0.8);
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:1.8rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.close-btn:hover{
+    color:#ff4d6d;
+    transform:rotate(90deg);
+}
+
+/* MESSAGE SECTION */
+.message-section{
+    width:100%;
+    max-width:850px;
+    margin-top:80px;
+    padding:40px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    color:white;
+    z-index:10;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    animation:fadeIn 2s ease;
+}
+
+.message-section h2{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:30px;
+    color:#ffe066;
+}
+
+.message-section p{
+    font-size:1.1rem;
+    line-height:2;
+    margin-bottom:20px;
+    text-align:justify;
+    color:#f5f5f5;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .card{
+        width:95%;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        height:200px;
+    }
+
+    .message-section{
+        padding:25px;
+    }
+
+    .message-section h2{
+        font-size:1.7rem;
+    }
+
+    .message-section p{
+        font-size:1rem;
+        line-height:1.8;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BALLOON -->
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+<!-- CARD -->
+<div class="card">
+
+    <h1>🎉 Happy Birthday 🎂</h1>
+
+    <h2>Yolanda Ajeng 💖</h2>
+
+    <p>
+        Semoga harimu dipenuhi kebahagiaan,
+        cinta, dan semua impianmu tercapai ✨
+        <br><br>
+        Tetap jadi pribadi yang hebat,
+        ceria, dan selalu membawa senyum 🌸
+    </p>
+
+    <button class="btn" onclick="showGallery()">
+        Klik Surprise 🎁
+    </button>
+
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-popup" id="galleryPopup">
+
+    <div class="gallery-box">
+
+        <span class="close-btn" onclick="closeGallery()">✖</span>
+
+        <h2>💖 Foto Kenangan 💖</h2>
+
+        <div class="gallery">
+
+            <img src="WhatsApp Image 2026-05-25 at 14.27.19.jpeg" alt="Foto 1">
+
+            <img src="wa2.jpeg" alt="Foto 2">
+
+            <img src="wa3.jpeg" alt="Foto 3">
+
+            <img src="wa4.jpeg" alt="Foto 4">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MESSAGE -->
+<div class="message-section">
+
+    <h2>💌 Untuk Yolanda 💌</h2>
+
+    <p>
+        Selamat ulang tahun untuk yolanda sayang 💖
+        Semoga di umur yang baru ini, semua hal baik selalu datang
+        menghampirimu. Semoga hari-harimu dipenuhi kebahagiaan,
+        kesehatan, dan cinta dari orang-orang terdekatmu ✨
+    </p>
+
+    <p>
+        Terima kasih karena selalu menjadi pribadi yang kuat,
+        baik hati, dan mampu membawa senyum untuk banyak orang.
+        Semoga semua impian yang belum tercapai bisa segera
+        terwujud satu per satu 🌸
+    </p>
+
+    <p>
+        Jangan pernah merubah diri uuntuk orang lain, karena kamu sudah luar biasa apa adanya.
+        Tetap jadi Yolanda yang ceria, manis, dan selalu
+        bikin hari-hari jadi lebih indah 💕
+    </p>
+
+    <p>
+        Semoga tahun ini menjadi awal dari cerita yang lebih
+        bahagia, lebih sukses, dan lebih penuh cinta.
+        Happy Birthday once again 🎂✨
+    </p>
+
+   <h2> Untuk mas bry </h2>  
+
+    <p>
+       terima kasih telah berusaha dan selalu mengusahakan yola,
+       aku ngerti u sangat sayang be yola dan ingin memberikan yang terbaik untuk yola.
+       semoga hubungan kalian selalu penuh kebahagiaan, saling mendukung, dan terus tumbuh menjadi lebih kuat setiap harinya,
+       jaga dan sayangi yola dengan sepenuh hati, karena dia adalah sosok yang luar biasa dan pantas mendapatkan yang terbaik.
+    </p>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="music">
+    <source src="Glenn Fredly - Kasih Putih (Official Audio).mp4" type="audio/mp4">
+</audio>
+
+<script>
+
+/* SHOW GALLERY + MUSIC */
+function showGallery(){
+
+    document.getElementById("galleryPopup").style.display="flex";
+
+    document.getElementById("music").play();
+}
+
+/* CLOSE GALLERY */
+function closeGallery(){
+
+    document.getElementById("galleryPopup").style.display="none";
+}
+
+/* CONFETTI */
+for(let i=0;i<120;i++){
+
+    let confetti=document.createElement("div");
+
+    confetti.classList.add("confetti");
+
+    confetti.style.left=Math.random()*100+"vw";
+
+    confetti.style.animationDuration=
+    (Math.random()*3+3)+"s";
+
+    confetti.style.background=
+    `hsl(${Math.random()*360},100%,50%)`;
+
+    document.body.appendChild(confetti);
+}
+
+/* HEARTS */
+for(let i=0;i<30;i++){
+
+    let heart=document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML="💖";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.animationDuration=
+    (Math.random()*5+4)+"s";
+
+    heart.style.fontSize=
+    (Math.random()*20+15)+"px";
+
+    document.body.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
